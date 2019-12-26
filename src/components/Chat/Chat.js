@@ -17,7 +17,7 @@ const Chat = ({ location }) => {
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = "https://react-chat-app-zakin-2.herokuapp.com/";
+  const ENDPOINT = "https://chat-web-zakin.herokuapp.com/";
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
