@@ -5,7 +5,7 @@ import onlineIcon from "../../icons/onlineIcon.png";
 
 import "./infoBar.css";
 
-const infoBar = ({ room }) => (
+const InfoBar = ({ room }) => (
   <div className="infoBar">
     <div className="leftInnerContainer">
       <img className="onlineIcon" src={onlineIcon} alt="online icon" />
@@ -19,4 +19,4 @@ const infoBar = ({ room }) => (
   </div>
 );
 
-export default infoBar;
+export default InfoBar;

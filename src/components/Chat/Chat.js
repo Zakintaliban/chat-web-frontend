@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import queryString from "query-string";
 import io from "socket.io-client";
 
-import TextContainer from "../textContainer/textContainer";
-import InfoBar from "../infoBar/infoBar";
-import Input from "../Input/Input";
+import TextContainer from "../TextContainer/TextContainer";
 import Messages from "../Messages/Messages";
+import InfoBar from "../InfoBar/InfoBar";
+import Input from "../Input/Input";
 
 import "./Chat.css";
 
@@ -24,16 +24,14 @@ const Chat = ({ location }) => {
 
     socket = io(ENDPOINT);
 
-    setName(name);
     setRoom(room);
+    setName(name);
 
-    socket.emit("join", { name, room }, () => {});
-
-    return () => {
-      socket.emit("disconnect");
-
-      socket.off();
-    };
+    socket.emit("join", { name, room }, error => {
+      if (error) {
+        alert(error);
+      }
+    });
   }, [ENDPOINT, location.search]);
 
   useEffect(() => {
@@ -54,12 +52,11 @@ const Chat = ({ location }) => {
 
   const sendMessage = event => {
     event.preventDefault();
+
     if (message) {
       socket.emit("sendMessage", message, () => setMessage(""));
     }
   };
-
-  console.log(message, messages);
 
   return (
     <div className="outerContainer">

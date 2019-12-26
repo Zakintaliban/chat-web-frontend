@@ -5,7 +5,7 @@ import onlineIcon from "../../icons/onlineIcon.png";
 import "./textContainer.css";
 
 const TextContainer = ({ users }) => (
-  <div className="textContainer">
+  <div className="TextContainer">
     <div>
       <h1>
         Realtime Chat Application{" "}
